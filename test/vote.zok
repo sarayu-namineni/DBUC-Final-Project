@@ -1,0 +1,15 @@
+import "hashes/sha256/512bitPacked" as sha256packed;
+
+def main(field[100] commitments, u32 len, private u32 i, field d, private field h) {
+    assert(0 <= (2 * i) && (2 * i + 1) < len);
+    field j = 0;
+    field k = 0;
+    field l = d;
+    field m = h;
+    field[2] n = sha256packed([j, k, l, m]);
+    field p = commitments[2 * i];
+    field q = commitments[2 * i + 1];
+    assert(n[0] == p);
+    assert(n[1] == q);
+    return;
+}
